@@ -299,28 +299,35 @@ online](http://www.cis.upenn.edu/~cis552/homework0.html). Then replace
 `undefined` below with your answers.
 
 > name :: String
-> name = undefined
+> name = "Jae Joon Lee"
 
 > pennkey :: String
-> pennkey = undefined
+> pennkey = "jjlee"
 
 Your github userid. 
 
 > githubUserId :: String
-> githubUserId = undefined
+> githubUserId = "dlwownssla17"
 
 Write a few sentences about your programming background. What
 languages have you used before? What is the size of the largest
 programs you have written in those languages?
 
 > programmingExperience :: String
-> programmingExperience = undefined
+> programmingExperience = "I have experience with Java, C, OCaml, Python, \
+>                         \Ruby, and Bash, as well as web programming \
+>                         \(HTML/CSS/Javascript/Python and Flask/\
+>                         \Ruby on Rails). The largest program I have \
+>                         \written individually was an adventure game \
+>                         \in Bash with around 13,000 lines of code."
 
 What do you hope to get from CIS 552?  What do you expect to learn
 from the course?
 
 > desiredOutcome :: String
-> desiredOutcome = undefined
+> desiredOutcome = "I hope to further my appreciation of functional \
+>                  \programming language and learn better practices of \
+>                  \an advanced and experienced programmer."
 
 
 
