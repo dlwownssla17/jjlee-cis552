@@ -396,5 +396,7 @@ lcs _ _                       = ""
 
 testLcs :: Test
 testLcs = "Lcs" ~: TestList [ lcs "Advanced" "Advantaged" ~?= "Advaned",
-    lcs "abcd" "acbd" ~?= "acd" ]
+    lcs "abcd" "acbd" ~?= "acd", lcs "a" "abc" ~?= "a",
+    lcs "ab" "ba" ~?= "b", lcs "" "a" ~?= "",
+    lcs "" "" ~?= "", lcs "abc" "def" ~?= "" ]
 
