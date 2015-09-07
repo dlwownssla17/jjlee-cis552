@@ -1,6 +1,4 @@
-{-# OPTIONS -Wall -fwarn-tabs -fno-warn-type-defaults  #-}
-
--- I should add the option -Werror upon completing this assignment.
+{-# OPTIONS -Wall -fwarn-tabs -fno-warn-type-defaults -Werror  #-}
 
 {-# LANGUAGE NoImplicitPrelude #-}
 
