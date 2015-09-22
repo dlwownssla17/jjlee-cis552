@@ -1,0 +1,49 @@
+Review for submission : 4
+
+Answer the following questions about this submission:
+
+1. Does the solution actually divide into to generic functions plus a specific
+instance for transforming plays?
+
+The solution divides into thousands of generic functions plus the convertContent function that handles the transforming of the plays (i.e. the main helper function of the formatPlay function).
+
+2. Are there parts of their general library that are specific to plays?
+
+The only functions that seem to me as specific to plays are convertFirsts, converstListContent, and convertContent, in addition to the given formatPlay.
+
+3. Is the specific part "short"? Is it easy to see the format of the specific
+transformation from this code. i.e. just looking at this code, how well can
+you tell what the input structure looks like? Or the output structure?
+
+The specific part is indeed short. The input structure seems pretty straightforward, given that these functions mostly use explicit pattern matching. The brevity of the specific part certainly helps with determining the output structure, although I experienced an issue with perhaps too much abstraction, which I will address in further detail below in Question 5.
+
+4. How difficult would it be to modify this transformation with new
+information for the play type. i.e. Suppose the input also included
+performance history after the ACTs.
+
+<PERFHISTORY>
+  <PERFORMANCE>
+     <LOCATION>Philadelphia, PA</LOCATION>
+     <DATE>September 19, 2015</DATE>
+  </PERFORMANCE>
+  -- more PERFORMANCES
+ </PERFHISTORY>
+ 
+And you would like to transform this part to:
+ 
+<h3>Performed at</h3>
+<ol>
+<li> Philadelphia, PA on September 19, 2015 </li>
+ ...
+</ol>
+How would you modify their solution to do this?
+
+I would add a pattern in the convertContent solution: tag == perfHistoryTag, where perfHistoryTag == “PERFHISTORY”. For this pattern, to match the design of the existing code thus far, I would call another helper function (say, perfHistoryMap or perfHistoryFold) that creates the h3 and ol elements and then breaks down the list of performances into individual performance elements, which calls another helper function (say, convertPerformance) that creates a li element whose string corresponds to (location element data) ++ “ on “ ++ (date element data) within the ol element.
+
+5. What suggestions can you make to improve their design?
+
+I definitely admire the level at which they provided abstraction with a ton of generic functions and constant variables. However, I claim that too much abstraction may often hurt readability. I found myself tracking through a bunch of variable and function names in order to understand how the various functions were working together. Also, certain string constants that are used only once, like “html” and “body”, need not be assigned as variables, though I understand that they may have chosen to do so for consistency with other tags.
+
+6. What is the best part of their design?
+ 
+Once again, the level of abstraction they provided is astonishing. The minor issue regarding readability mentioned above aside, one direct benefit of dividing up the work with a multitude of generic functions is that debugging becomes much easier. So kudos to you, brave Haskellian soldiers.

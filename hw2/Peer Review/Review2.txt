@@ -1,0 +1,49 @@
+Review for submission : 20
+
+Answer the following questions about this submission:
+
+1. Does the solution actually divide into to generic functions plus a specific
+instance for transforming plays?
+
+The foldXML function certainly is an excellent generic function. The linebreak constant, although not a function, is also generic. However, foldXML seems to be the only helper function of the formatPlay function.
+
+2. Are there parts of their general library that are specific to plays?
+
+The main formatPlay function is specific to plays.
+
+3. Is the specific part "short"? Is it easy to see the format of the specific
+transformation from this code. i.e. just looking at this code, how well can
+you tell what the input structure looks like? Or the output structure?
+
+The specific part is relatively short, though it can certainly be made shorter by delegating more common tasks to generic functions. Given that the formatPlay function accepts the entire XML, the input structure seems fairly straightforward. Thanks to our fair amount of study of the fold operation, the implementation and use of foldXML in their code certainly makes the output structure seem pretty intuitive. Indeed, had we not known much about the fold operation, determining what is going on in the formatPlay function may have been trickier.
+
+4. How difficult would it be to modify this transformation with new
+information for the play type. i.e. Suppose the input also included
+performance history after the ACTs.
+
+<PERFHISTORY>
+  <PERFORMANCE>
+     <LOCATION>Philadelphia, PA</LOCATION>
+     <DATE>September 19, 2015</DATE>
+  </PERFORMANCE>
+  -- more PERFORMANCES
+ </PERFHISTORY>
+ 
+And you would like to transform this part to:
+ 
+<h3>Performed at</h3>
+<ol>
+<li> Philadelphia, PA on September 19, 2015 </li>
+ ...
+</ol>
+How would you modify their solution to do this?
+
+In the spirit of their solution, I would add another pattern in the formatPlay function: fBranch “PERFHISTORY” lst. This pattern would build the h3 element as well as the ol element. This pattern would also call some other function that incorporate the concept of fold or map to iterate over the PERFORMANCE elements and create li elements whose strings correspond to (location element data) ++ “ on “ ++ (date element data) within the ol element.
+
+5. What suggestions can you make to improve their design?
+
+Without a doubt, the clever use of foldXML certainly helped with the understanding of their code. However, it would help further in terms of both readability and debugging if they divided the work further by more generic functions and isolate parts of the task specific to the play to only a few lines of code.
+
+6. What is the best part of their design?
+
+Once again, I have the highest respect for their use of foldXML to get the job done in relatively small amount of code. So kudos to you, brave Haskellian soldiers.
